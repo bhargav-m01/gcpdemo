@@ -7,5 +7,5 @@ class Config:
     MAIL_PORT = 587
     MAIL_USE_TLS = True
     MAIL_DEBUG = True
-    MAIL_USERNAME = os.environ.get('EMAIL_USER')
-    MAIL_PASSWORD = os.environ.get('EMAIL_PASS')
+    MAIL_USERNAME = 'flaskblog.test0318@gmail.com'
+    MAIL_PASSWORD = 'Flaskblog@0318'
