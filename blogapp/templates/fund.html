@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+<div class="prof">
+  <h1 style="color: #060c38"> SB Royal Apartments. </h1>
+</div>
+
+<div class="container-fluid prof1">
+<div class="row">
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+        <form method="POST" class="form-container">
+            {# This hidden_tag is a CSRF security feature. #}
+            {{ form.hidden_tag() }}
+            {{ wtf.form_field(form.debitcredit) }} <br/> <br/>
+            {{ wtf.form_field(form.statement) }}
+        </form>
+    </div>
+</div>
+</div>
+
+{% endblock %}

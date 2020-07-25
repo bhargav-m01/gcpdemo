@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+<link rel="stylesheet" type = "text/css" href="{{url_for('static', filename='base1.css')}}">
+
+<div class='tran'>
+
+
+  <div class="dropdown-divider"></div>
+
+  <div class="tranbal">
+    <b><a> Current Balance: <a></b>
+    <b><a style="float: right;"> {{ tranbalance }}</a></b>
+  </div>
+
+<div class="dropdown-divider"></div>
+{% for statement in statement | reverse %}
+
+      <div class="row">
+        <div class="col">
+          {{ statement.date_created }}
+        </div>
+        <div class="col" style="text-align: right;">
+          {{ statement.balance }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          {{ statement.category }}
+        </div>
+        {% if statement.camount > 0 %}
+            <div class="col" style="text-align: right;">
+            <p>  +{{ statement.camount }} </p>
+            </div>
+        {% else %}
+            <div class="col" style="text-align: right;">
+            <p>  -{{ statement.damount }} </p>
+            </div>
+        {% endif %}
+
+      </div>
+      <div class="dropdown-divider"></div>
+
+
+{% endfor %}
+
+</div>
+{% endblock %}

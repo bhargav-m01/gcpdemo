@@ -43,3 +43,30 @@ class Post(db.Model):
 
     def __repr__(self):
         return f"Post('{self.title}','{self.date_posted}')"
+
+class Amount(db.Model,UserMixin):
+
+    id = db.Column(db.Integer, primary_key = True)
+    date_created  = db.Column(db.DateTime,  default=db.func.current_timestamp())
+    category = db.Column(db.String(64))
+    camount = db.Column(db.Integer)
+    damount = db.Column(db.Integer)
+    balance = db.Column(db.Integer)
+
+    def __init__(self, category, camount, damount, balance):
+        #self.date_created = date_created
+        self.category = category
+        self.camount = camount
+        self.damount = damount
+        self.balance = balance
+
+class Choice(db.Model,UserMixin):
+
+    id = db.Column(db.Integer, primary_key = True)
+    choice = db.Column(db.String(64), unique=True, index=True)
+
+    def __init__(self, name):
+        self.choice = choice
+
+    def as_dict(self):
+        return {'choice': self.choice}
