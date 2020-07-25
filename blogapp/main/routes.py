@@ -9,7 +9,7 @@ main = Blueprint('main',__name__)
 @main.route('/')
 @main.route('/home')
 def home():
-    page = request.args.get('page', 1, type=int)exit
+    page = request.args.get('page', 1, type=int)
     posts = Post.query.order_by(Post.date_posted.desc()).paginate(page=page, per_page=5)
     return render_template('home.html', title='Home Title', posts=posts)
 
@@ -62,7 +62,7 @@ def debitcredit():
             db.session.add(amount)
             db.session.commit()
 
-    return render_template('debitcredit.html', form=form, balance = balance)
+    return render_template('debitcredit.html', form=form, balance = balance, title='Transactions')
 
 @main.route('/statement', methods=['GET', 'POST'])
 def statement():
@@ -73,7 +73,7 @@ def statement():
     for tranamt in statement:
         tranbalance = tranamt.balance
 
-    return render_template('statement.html', statement=statement, tranbalance = tranbalance)
+    return render_template('statement.html', statement=statement, tranbalance = tranbalance, title='Statments')
 
 @main.route('/choices')
 def choices():
